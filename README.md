@@ -12,6 +12,6 @@
 #### Set up Prompts to choose from Variable Arrays 
 
 #### Url:
-#### Github Url:
+#### Github Url: https://github.com/Jump89/passwoord-generator
 #### Screen shot of password generated 
 ![](./Image/Passwordgenerator.png)
