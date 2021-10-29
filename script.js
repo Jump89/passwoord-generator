@@ -1,8 +1,8 @@
 // Assignment Code
-let generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate");
 
 // Array of special characters to be included in password
- let special = [
+ var special = [
   '@',
   '%',
   '+',
@@ -28,9 +28,9 @@ let generateBtn = document.querySelector("#generate");
   '.'
 ];
 // Array of numeric characters to be included in password
-let numeric = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var numeric = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 // Array of lowercase characters to be included in password
-let lower = [
+var lower = [
   'a',
   'b',
   'c',
@@ -59,7 +59,7 @@ let lower = [
   'z'
 ];
 // Array of uppercase characters to be included in password
-let upper = [
+var upper = [
   'A',
   'B',
   'C',
@@ -89,15 +89,15 @@ let upper = [
 ];
 // Write password to the #password input
 function generatePassword() {
- // Users PW Options
+ // Users PW prerequisites 
   const pwLength = window.prompt("How many characters would you like your password to be?")
   if(pwLength < 8 || pwLength > 128) {
     alert('Please select valid character length!');
   }else {
-    let upper = confirm('Would you like to use Uppercase characters?');
-    let lower = confirm('Would you like to use Lowercase characters?');
-    let numeric = confirm('Would you like to use numeric characters?');
-    let special = confirm('Would you like to use special characters?');
+    var upper = confirm('Would you like to use Uppercase characters?');
+    var lower = confirm('Would you like to use Lowercase characters?');
+    var numeric = confirm('Would you like to use numeric characters?');
+    var special = confirm('Would you like to use special characters?');
   }
 
   let allChars ='';
@@ -117,22 +117,38 @@ function generatePassword() {
   if (special) {
     allChars += "@%+\\/!#$^?:,)(}{][~-_.";
   }
+
+  
+  if (upper === false && lower === false && numeric === false && special === false) {
+    alert('Please select valid password parameters!');
+  }
+
   console.log('allChars:', allChars)
 
-let outputString ="";
-for (let i = 0; i < pwLength; i++) {
+var outputString ="";
+
+//Created Loop to included allChars
+for (var i = 0; i < pwLength; i++) {
   outputString += allChars.charAt(Math.floor(Math.random() * allChars.length));
   console.log(outputString);
 }
 
+
+// Return Generated Password
 return outputString;
 
-  let password = generatePassword();
-  let passwordText = document.querySelector("#password");
+}
+// end  of pw function
+
+
+// Write password to the #password input
+function writePassword (){
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-console.log('')
+
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);
+generateBtn.addEventListener("click", writePassword);
